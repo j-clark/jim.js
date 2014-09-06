@@ -6,6 +6,12 @@
   };
 
   function def(property, definition) {
+    beforeEach(function() {
+      _defineProperty(property, definition);
+    });
+  }
+
+  function _defineProperty(property, definition) {
     _cacheDefinition(property, definition);
     jim.getterCache[property] = _buildGetter(property);
 
