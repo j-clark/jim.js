@@ -1,0 +1,19 @@
+{
+  "name": "jim.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/j-clark/jim.js",
+  "authors": [
+    "Joshua Clark <atxjclark@gmail.com>"
+  ],
+  "description": "Jasmine IMproved",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/bower_components",
+    "spec"
+  ],
+  "dependencies": {
+    "lodash": "~2.4.1"
+  }
+}
