@@ -1,0 +1,18 @@
+{
+  "name": "jim",
+  "version": "0.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/j-clark/jim.js.git"
+  },
+  "author": "Joshua Clark <atxjclark@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j-clark/jim.js/issues"
+  },
+  "homepage": "https://github.com/j-clark/jim.js",
+  "dependencies": {
+    "bower": "^1.3.9"
+  }
+}
