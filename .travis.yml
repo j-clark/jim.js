@@ -1,0 +1,3 @@
+before_script: bundle
+
+script: bundle exec rake jasmine:ci
