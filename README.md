@@ -1,10 +1,10 @@
 [![Code Climate](https://codeclimate.com/github/j-clark/jim.js/badges/gpa.svg)](https://codeclimate.com/github/j-clark/jim.js) [![Build Status](https://travis-ci.org/j-clark/jim.js.svg?branch=master)](https://travis-ci.org/j-clark/jim.js)
 
 # Jasmine IMproved
-### A suite of Jasmine helpers to make testing your JavaScript a little nicer
+**A suite of Jasmine helpers to make testing your JavaScript a little nicer**
 
 ## Examples
-# jim.def
+### jim.def
 ```javascript
 describe('using jim.def', function() {
   describe('defining a static property', function(){
