@@ -4,7 +4,6 @@
   };
 
   function def(property, definition) {
-    console.log(property, definition);
     Object.defineProperty(jim.context, property, {
       get: _buildGetter(definition)
     });
