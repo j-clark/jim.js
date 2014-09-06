@@ -18,4 +18,8 @@
       };
     }
   }
+
+  beforeEach(function() {
+    jim.context = this;
+  });
 })();

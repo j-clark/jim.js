@@ -1,33 +1,15 @@
 describe('jim.def', function() {
-  beforeEach(function() {
-    this.jimContext = {};
-    jim.context = this.jimContext;
-  });
-
-  describe('simple properties', function() {
-    context('when it is a literal value', function() {
-      beforeEach(function() {
-        jim.def('literalValue', 'literalValue');
-      });
-
-      it('creates it as a property on the user context object', function() {
-        expect(this.jimContext.literalValue).toEqual('literalValue');
-      });
+  describe('defining a simple property', function() {
+    beforeEach(function() {
+      jim.def('literalValue', 'literalValue');
     });
 
-    context('when it is a variable in scope', function() {
-      beforeEach(function() {
-        var variableInScope = 'variableInScope';
-        jim.def('variableInScope', variableInScope);
-      });
-
-      it('creates it as a property on the user context object', function() {
-        expect(this.jimContext.variableInScope).toEqual('variableInScope');
-      });
+    it('creates it as a property on the user context object', function() {
+      expect(this.literalValue).toEqual('literalValue');
     });
   });
 
-  describe('future-defined properties', function() {
+  describe('defining a property with a function', function() {
     beforeEach(function() {
       jim.def('firstDefinedProp', function() {
         return this.secondDefinedProp;
@@ -37,7 +19,7 @@ describe('jim.def', function() {
     });
 
     it('accepts a function returning the future-defined expression', function() {
-      expect(this.jimContext.firstDefinedProp).toEqual('secondDefinedProp');
+      expect(this.firstDefinedProp).toEqual('secondDefinedProp');
     });
   });
 });
