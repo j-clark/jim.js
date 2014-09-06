@@ -1,5 +1,6 @@
 src_files:
   - app/js/**/*.js
+  - app/bower_components/lodash/dist/lodash.js
 
 stylesheets:
   - stylesheets/**/*.css

@@ -12,7 +12,7 @@
     if (!jim.context.hasOwnProperty(property)) {
       Object.defineProperty(jim.context, property, {
         get: function() {
-          return jim.getterCache[property].bind(jim.context)();
+          return _.bind(jim.getterCache[property], jim.context)();
         }
       });
     }
