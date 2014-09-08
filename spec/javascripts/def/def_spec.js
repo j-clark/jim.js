@@ -1,4 +1,6 @@
 describe('jim.def', function() {
+  'use strict';
+
   describe('defining a simple property', function() {
     jim.def('literalValue', 'literalValue');
 

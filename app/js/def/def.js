@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+
   window.jim = {
     def: def,
     definitionCache: {},
