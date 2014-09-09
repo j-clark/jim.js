@@ -7,7 +7,7 @@
 ### def
 ```javascript
 describe('using def', function() {
-  describe('defining a static property', function(){
+  describe('defining a static property', function() {
     def('staticProperty', 'staticProperty');
 
     it('adds the static property to the user context object', function() {
