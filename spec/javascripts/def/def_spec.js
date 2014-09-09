@@ -22,7 +22,11 @@ describe('def', function() {
   });
 
   describe('overwriting the property definition', function() {
-    def('property', 'original definition');
+    def('property', function() {
+      return this.definition;
+    });
+
+    def('definition', 'original definition');
 
     context('when the property definition is not overridden', function() {
       it('uses the original definition on the first invocation', function() {
@@ -31,11 +35,7 @@ describe('def', function() {
     });
 
     context('when the property definition is overridden', function() {
-      def('property', function() {
-        return this.overriddenDefinition;
-      });
-
-      def('overriddenDefinition', 'overridden definition');
+      def('definition', 'overridden definition');
 
       it('uses the overridden definition', function() {
         expect(this.property).toEqual('overridden definition');
