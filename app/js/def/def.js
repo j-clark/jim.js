@@ -1,6 +1,14 @@
 (function() {
   'use strict';
 
+  var definitionCache,
+      jimContext;
+
+  beforeEach(function() {
+    definitionCache = {};
+    jimContext = this;
+  });
+
   function def(property, definition) {
     beforeEach(function() {
       Object.defineProperty(this, property, {
@@ -11,13 +19,13 @@
   }
 
   function _buildGetter(property, definition) {
-    if (typeof definition === 'function') {
-      return definition;
-    } else {
-      return function() {
-        return definition;
-      };
-    }
+    return function() {
+      if(!definitionCache[property]) {
+        definitionCache[property] = _.isFunction(definition) ? _.bind(definition, jimContext)() : definition;
+      }
+
+      return definitionCache[property];
+    };
   }
 
   window.def = def;
