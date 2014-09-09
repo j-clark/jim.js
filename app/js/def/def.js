@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  window.def = def;
-
   function def(property, definition) {
     beforeEach(function() {
       Object.defineProperty(this, property, {
@@ -21,4 +19,6 @@
       };
     }
   }
+
+  window.def = def;
 })();
