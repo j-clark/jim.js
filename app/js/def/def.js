@@ -2,36 +2,19 @@
   'use strict';
 
   window.jim = {
-    def: def,
-    definitionCache: {},
-    getterCache: {}
+    def: def
   };
 
   function def(property, definition) {
     beforeEach(function() {
-      _defineProperty(property, definition);
+      Object.defineProperty(this, property, {
+        get: _buildGetter(property, definition),
+        configurable: true
+      });
     });
   }
 
-  function _defineProperty(property, definition) {
-    _cacheDefinition(property, definition);
-    jim.getterCache[property] = _buildGetter(property);
-
-    if (!jim.context.hasOwnProperty(property)) {
-      Object.defineProperty(jim.context, property, {
-        get: function() {
-          return _.bind(jim.getterCache[property], jim.context)();
-        }
-      });
-    }
-  }
-
-  function _cacheDefinition(property, definition) {
-    jim.definitionCache[property] = definition;
-  }
-
-  function _buildGetter(property) {
-    var definition = jim.definitionCache[property];
+  function _buildGetter(property, definition) {
     if (typeof definition === 'function') {
       return definition;
     } else {
@@ -40,8 +23,4 @@
       };
     }
   }
-
-  beforeEach(function() {
-    jim.context = this;
-  });
 })();
