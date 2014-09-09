@@ -1,9 +1,7 @@
 (function() {
   'use strict';
 
-  window.jim = {
-    def: def
-  };
+  window.def = def;
 
   function def(property, definition) {
     beforeEach(function() {
