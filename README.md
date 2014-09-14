@@ -44,8 +44,6 @@ Set up spy return values based on arguments passed to the spy.
 
 ```javascript
 describe('.when', function() {
-  'use strict';
-
   def('spy', function() { return jasmine.createSpy('spy'); });
 
   describe('passing expectedArgs and an associated returnValue', function() {
