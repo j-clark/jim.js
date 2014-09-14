@@ -3,8 +3,11 @@
 # Jasmine IMproved
 **A suite of Jasmine helpers to make testing your JavaScript a little nicer**
 
-## Examples
 ### def
+Set up test variables for use later.
+
+The first argument to `def` will be a property on the jasmine user context (`this`) object. If you pass a function for the definition of this property, it will not be executed until the property is accessed. This allows you to lazily define properties and to define properties that rely on properties which are defined in later, nested contexts.
+
 ```javascript
 describe('using def', function() {
   describe('defining a static property', function() {
@@ -28,6 +31,47 @@ describe('using def', function() {
 
       it('uses the overridden value', function() {
         expect(this.variableProperty).toEqual('new value');
+      });
+    });
+  });
+});
+```
+
+### when..thenReturn
+Set up spy return values based on arguments passed to the spy.
+
+`when` is chainable to allow you configure multiple argument list -> return value pairs.
+
+```javascript
+describe('.when', function() {
+  'use strict';
+
+  def('spy', function() { return jasmine.createSpy('spy'); });
+
+  describe('passing expectedArgs and an associated returnValue', function() {
+    beforeEach(function() {
+      this.spy
+        .and.when(jasmine.any(String), 'arg2')
+        .thenReturn('return value one')
+        .and.when(jasmine.objectContaining({ key: 'val' }), 'arg2')
+        .thenReturn('return value two');
+    });
+
+    describe('when `actualArgs` match `expectedArgs` exactly', function() {
+      it('returns the configured returnValue', function() {
+        expect(this.spy('arg1', 'arg2')).toEqual('return value one');
+      });
+    });
+
+    describe('when expectedArgs match actualArgs[0..n]', function() {
+      it('returns the configured returnvalue', function() {
+        expect(this.spy({ key: 'val', foo: 'bar' }, 'arg2', 'arg3')).toEqual('return value two');
+      });
+    });
+
+    describe('when expectedArgs does not match actualArgs[0..n]', function() {
+      it('returns undefined', function() {
+        expect(this.spy('arg2', 'arg3')).toBeUndefined();
       });
     });
   });
