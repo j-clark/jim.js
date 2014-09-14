@@ -76,6 +76,7 @@
 
     "globals"       : {
       "module": true,
+      "jasmine": true,
       "expect": true,
       "describe": true,
       "beforeEach": true,
