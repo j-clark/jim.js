@@ -85,6 +85,7 @@
       "it": true,
       "_": true,
 
-      "def": true
+      "def": true,
+      "double": true
     }
 }
