@@ -15,6 +15,7 @@ module.exports = function(grunt) {
         'spec/**/*.js'
       ]
     },
+
     karma: {
       options: {
         frameworks: ['jasmine']
@@ -33,4 +34,6 @@ module.exports = function(grunt) {
       }
     }
   });
+
+  grunt.registerTask('default', ['jshint', 'karma:unit']);
 };
