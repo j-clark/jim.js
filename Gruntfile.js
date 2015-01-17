@@ -16,6 +16,16 @@ module.exports = function(grunt) {
       ]
     },
 
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: 'app/js/**/*.js',
+        dest: 'jim.js'
+      }
+    },
+
     karma: {
       options: {
         frameworks: ['jasmine']
