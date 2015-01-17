@@ -75,3 +75,43 @@ describe('.when', function() {
   });
 });
 ```
+
+```
+describe('double', function() {
+  describe('defining a double', function() {
+    def('double', double('someDouble'));
+
+    it('has a name for identification in test output', function() {
+      expect(this.double.doubleName).toBe('someDouble');
+    });
+
+    describe('with methods and simple return values', function() {
+      def('double', double('someDouble', { getFive: 5 }));
+
+      it('has a method returning the simple value', function() {
+        expect(this.double.getFive()).toEqual(5);
+      });
+
+      it('is still a jasmine spy', function() {
+        this.double.getFive();
+        expect(this.double.getFive).toHaveBeenCalled();
+      });
+    });
+
+
+    describe('with methods and computed return values', function() {
+      def('double', double('someDouble', { getValue: function() { return this.value; } }));
+      def('value', 'hamburgers');
+
+      it('binds to the user context object', function() {
+        expect(this.double.getValue()).toEqual('hamburgers');
+      });
+
+      it('is still a jasmine spy', function() {
+        this.double.getValue();
+        expect(this.double.getValue).toHaveBeenCalled();
+      });
+    });
+  });
+});
+```
