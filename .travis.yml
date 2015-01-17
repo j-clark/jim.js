@@ -1,5 +1,13 @@
-before_script: bundle
+language: node_js
+
+node_js:
+  - "0.10"
+
+before_script:
+  - npm install -g bower
+  - npm install -g grunt
+  - bower install
 
 script:
-  - node_modules/grunt-cli/bin/grunt jshint
-  - bundle exec rake jasmine:ci
+  - grunt jshint
+  - grunt karma
