@@ -7,14 +7,29 @@
     if(definitions) {
       methods = Object.keys(definitions);
       spy = jasmine.createSpyObj(identifier, methods);
-      methods.forEach(function(method) {
-        spy[method].and.returnValue(definitions[method]);
-      });
+      addMethodsToSpy(spy, definitions);
     } else {
-      spy = jasmine.createSpyObj(identifier, ['asdf']);
+      spy = {};
     }
 
+    spy.doubleName = identifier;
     return spy;
+  }
+
+  function addMethodsToSpy(spy, definitions) {
+    var methods = Object.keys(definitions);
+
+    beforeEach(function() {
+      var jimContext = this;
+
+      methods.forEach(function(method) {
+        if(typeof definitions[method] === 'function') {
+          spy[method].and.callFake(_.bind(definitions[method], jimContext));
+        } else {
+          spy[method].and.returnValue(definitions[method]);
+        }
+      });
+    });
   }
 
   window.double = double;
