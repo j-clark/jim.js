@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   'use strict';
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
     jshint: {
@@ -14,6 +14,23 @@ module.exports = function(grunt) {
         'app/js/**/*.js',
         'spec/**/*.js'
       ]
+    },
+    karma: {
+      options: {
+        frameworks: ['jasmine']
+      },
+      unit: {
+        options: {
+          singleRun: true,
+          browsers: ['PhantomJS'],
+          files: [
+            'app/bower_components/lodash/dist/lodash.min.js',
+            'app/js/**/*.js',
+            'spec/javascripts/helpers/**/*.js',
+            'spec/**/*.js'
+          ]
+        }
+      }
     }
   });
 };
