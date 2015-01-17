@@ -75,6 +75,7 @@
     "yui"           : false,    // Yahoo User Interface
 
     "globals"       : {
+      "require": true,
       "module": true,
       "jasmine": true,
       "expect": true,
