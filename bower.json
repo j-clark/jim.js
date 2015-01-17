@@ -7,13 +7,17 @@
   ],
   "description": "Jasmine IMproved: A suite of Jasmine helpers inspired by RSpec",
   "license": "MIT",
+  "main": "jim.js",
   "ignore": [
     "**/.*",
+    "spec",
+    "app",
     "node_modules",
-    "app/bower_components",
-    "spec"
+    "Gruntfile.js",
+    "package.json"
   ],
   "dependencies": {
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "jasmine": "~2.1.3"
   }
 }
