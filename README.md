@@ -76,7 +76,17 @@ describe('.when', function() {
 });
 ```
 
-```
+### double
+
+Create a test double to stand in for values that aren't relevant to the system under test.
+
+`double` accepts
+- a string as an identifier (this will be displayed in your test failure output)
+- a list of key value pairs, where each key will be a Jasmine spy method and each value will
+  - be the method called if it is a function
+  - be returned by the method if it is not a function
+
+```javascript
 describe('double', function() {
   describe('defining a double', function() {
     def('double', double('someDouble'));
